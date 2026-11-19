@@ -1,0 +1,32 @@
+---
+import type { Project } from '../data/projects';
+
+interface Props {
+  project: Project;
+  index: number;
+}
+const { project, index } = Astro.props;
+---
+<article class:list={['project-card', `accent-${project.accent}`]} data-category={project.category} style={`--delay:${index * 45}ms`}>
+  <div class="project-card__visual" aria-hidden="true">
+    <span class="project-card__number">{String(index + 1).padStart(2, '0')}</span>
+    {project.image
+      ? <img class="project-card__image" src={project.image} alt={`Vista previa de ${project.name}`} loading="lazy" />
+      : <div class="project-card__window"><div class="window-bar"><i></i><i></i><i></i></div><div class="window-code"><span></span><span></span><span></span><span></span><span></span></div></div>}
+  </div>
+  <div class="project-card__body">
+    <div class="project-card__meta">
+      <span data-i18n-category={project.category}>{project.category}</span>
+      <span>{project.status === 'live' ? '● Live' : '◇ Repo'}</span>
+    </div>
+    <h3>{project.name}</h3>
+    <p class="project-description" data-es={project.descriptionEs} data-en={project.descriptionEn}>{project.descriptionEs}</p>
+    <ul class="tags" aria-label="Tecnologías">
+      {project.technologies.map((technology) => <li>{technology}</li>)}
+    </ul>
+    <div class="project-card__links">
+      {project.demoUrl && <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" data-i18n="viewDemo">Ver demo <span>↗</span></a>}
+      {project.repositoryUrl && <a href={project.repositoryUrl} target="_blank" rel="noopener noreferrer" data-i18n="viewCode">Ver código <span>↗</span></a>}
+    </div>
+  </div>
+</article>

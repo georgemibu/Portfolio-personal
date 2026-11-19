@@ -1,16 +1,106 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { projects } from '../data/projects';
+import '../styles/global.css';
+const featured = projects.filter((project) => project.featured);
 ---
+<BaseLayout title="Jorge Rocha — Fullstack Developer" description="Portafolio profesional de Jorge Rocha, desarrollador Fullstack especializado en experiencias digitales y soluciones web.">
+  <Header />
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero__grid" aria-hidden="true"></div>
+      <div class="hero__content reveal">
+        <p class="eyebrow"><span></span><span data-i18n="heroEyebrow">Desarrollador web · Buenos Aires, Argentina</span></p>
+        <h1>Jorge<br/><em>Rocha</em><b>.</b></h1>
+        <p class="hero__role">Fullstack <span>Developer</span></p>
+      </div>
+      <div class="hero__side reveal">
+        <p data-i18n="heroLead">Diseño y desarrollo experiencias digitales completas, desde la interfaz hasta la arquitectura del backend.</p>
+        <div class="hero__actions">
+          <a class="button button--lime" href="#proyectos"><span data-i18n="viewWork">Explorar proyectos</span><b>↘</b></a>
+          <a class="button button--text" href="#contacto"><span data-i18n="contactMe">Contactarme</span><b>↗</b></a>
+        </div>
+      </div>
+      <div class="experience reveal"><strong>7</strong><span data-i18n="expLabel">años construyendo soluciones</span></div>
+      <div class="hero__orb" aria-hidden="true">
+        <div class="orb-ring orb-ring--one"></div><div class="orb-ring orb-ring--two"></div>
+        <div class="orb-core"><span>&lt;/&gt;</span></div>
+      </div>
+      <a class="scroll-cue" href="#sobre-mi"><span data-i18n="scroll">Deslizar</span><i>↓</i></a>
+    </section>
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+    <section class="about section" id="sobre-mi">
+      <div class="section-heading reveal"><p><span>01</span><span data-i18n="aboutLabel">Perfil</span></p><h2 data-i18n="aboutTitle">Código con criterio.<br/><em>Diseño con intención.</em></h2></div>
+      <div class="about__grid">
+        <div class="about__portrait reveal"><img class="portrait-photo" src="/foto-perfil.png" alt="Jorge Rocha, Fullstack Developer" loading="lazy" /></div>
+        <div class="about__copy reveal">
+          <p class="lead" data-i18n="aboutText">Con 7 años de experiencia, desarrollo productos digitales que conectan una interfaz clara con una lógica robusta.</p>
+          <div class="about__cards">
+            <article><span>01</span><p data-i18n="aboutCard1">Frontend & backend</p></article>
+            <article><span>02</span><p data-i18n="aboutCard2">Resolución de problemas</p></article>
+            <article><span>03</span><p data-i18n="aboutCard3">Productos completos</p></article>
+          </div>
+          <div class="cv-actions" aria-label="Descargar currículum">
+            <a class="button button--outline" href="/CV%20Jorge%20Adolfo%20Rocha%20-%20Fullstack%20Developer%20(Espanol).pdf" download="CV Jorge Adolfo Rocha - Español.pdf">
+              <span>CV — Español</span><b>↘</b>
+            </a>
+            <a class="button button--outline" href="/CV%20Jorge%20Adolfo%20Rocha%20-%20Fullstack%20Developer%20(English).pdf" download="Jorge Rocha CV - English.pdf">
+              <span>CV — English</span><b>↘</b>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="specialties section" id="especialidades">
+      <div class="section-heading reveal"><p><span>02</span><span data-i18n="specialtiesLabel">Especialidades</span></p><h2 data-i18n="specialtiesTitle">Una mirada completa <em>sobre el producto.</em></h2></div>
+      <div class="specialty-grid">
+        <article class="specialty specialty--ux reveal"><div class="specialty__top"><span>01</span><i>✦</i></div><h3 data-i18n="uxTitle">Diseño UX/UI</h3><p data-i18n="uxText">Diseño de interfaces y experiencias digitales centradas en el usuario.</p><div class="specialty__tags"><span>Figma</span><span>IA</span><span>Prototipos</span></div><div class="empty-state"><span data-i18n="uxSoon">Proyectos próximamente</span><p data-i18n="uxSoonText">Espacio reservado para proyectos de diseño, prototipos e investigación.</p></div></article>
+        <article class="specialty specialty--frontend reveal"><div class="specialty__top"><span>02</span><i>&lt;/&gt;</i></div><h3 data-i18n="frontendTitle">Frontend</h3><p data-i18n="frontendText">Interfaces modernas, accesibles y responsive con foco en la experiencia.</p><div class="specialty__tags"><span>HTML</span><span>CSS</span><span>React</span><span>Astro</span></div></article>
+        <article class="specialty specialty--backend reveal"><div class="specialty__top"><span>03</span><i>{'{ }'}</i></div><h3 data-i18n="backendTitle">Backend</h3><p data-i18n="backendText">Servidores, APIs, lógica de negocio e integración de servicios.</p><div class="specialty__tags"><span>Node.js</span><span>Express</span><span>APIs REST</span></div></article>
+        <article class="specialty specialty--fullstack reveal"><div class="specialty__top"><span>04</span><i>↗</i></div><h3 data-i18n="fullstackTitle">Fullstack</h3><p data-i18n="fullstackText">Aplicaciones completas que conectan interfaces, datos y servicios.</p><div class="specialty__tags"><span>React</span><span>Node.js</span><span>SQLite</span></div></article>
+      </div>
+    </section>
+
+    <section class="projects section" id="proyectos">
+      <div class="section-heading section-heading--row reveal"><p><span>03</span><span data-i18n="projectsLabel">Trabajo seleccionado</span></p><h2 data-i18n="projectsTitle">Proyectos <em>con propósito.</em></h2></div>
+      <div class="featured-grid">{featured.map((project, index) => <ProjectCard project={project} index={index} />)}</div>
+      <div class="catalog-toolbar reveal"><p>Catálogo <span>/ {projects.length}</span></p><div class="filters" role="group" aria-label="Filtrar proyectos"><button class="active" type="button" data-filter="all" data-i18n="all">Todos</button><button type="button" data-filter="frontend" data-i18n="frontend">Frontend</button><button type="button" data-filter="backend" data-i18n="backend">Backend</button><button type="button" data-filter="fullstack" data-i18n="fullstack">Fullstack</button></div></div>
+      <div class="catalog-grid">{projects.map((project, index) => <ProjectCard project={project} index={index + 4} />)}</div>
+    </section>
+
+    <section class="technologies section" id="tecnologias">
+      <div class="section-heading reveal"><p><span>04</span><span data-i18n="techLabel">Herramientas</span></p><h2 data-i18n="techTitle">Tecnologías que forman parte <em>de mi trabajo.</em></h2></div>
+      <div class="tech-grid">
+        <article class="reveal"><p data-i18n="frontendGroup">Frontend</p><div><span>HTML</span><span>CSS</span><span>JavaScript</span><span>React</span><span>Astro</span><span>Responsive Design</span></div></article>
+        <article class="reveal"><p data-i18n="backendGroup">Backend</p><div><span>Node.js</span><span>Express</span><span>JavaScript</span><span>APIs REST</span><span>Nodemailer</span></div></article>
+        <article class="reveal"><p data-i18n="databaseGroup">Bases de datos</p><div><span>SQLite</span></div></article>
+        <article class="reveal"><p data-i18n="toolsGroup">Herramientas</p><div><span>Git</span><span>GitHub</span><span>IA</span></div></article>
+        <article class="reveal"><p data-i18n="designGroup">Diseño</p><div><span>Diseño responsive</span><span>UX/UI</span></div></article>
+      </div>
+    </section>
+
+    <section class="contact section" id="contacto">
+      <div class="contact__intro reveal"><p><span>05</span><span data-i18n="contactLabel">Contacto</span></p><h2 data-i18n="contactTitle">¿Tenemos un proyecto <em>que construir?</em></h2><p data-i18n="contactText">Si querés conversar sobre una colaboración, una oportunidad o una idea, escribime.</p></div>
+      <form
+        class="contact-form reveal"
+        id="contact-form"
+        novalidate
+        data-service-id={import.meta.env.PUBLIC_EMAILJS_SERVICE_ID ?? ''}
+        data-template-id={import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID ?? ''}
+        data-public-key={import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY ?? ''}
+      >
+        <div class="form-grid"><label><span data-i18n="nameLabel">Nombre</span><input name="name" type="text" autocomplete="name" required /><small></small></label><label><span data-i18n="emailLabel">Email</span><input name="email" type="email" autocomplete="email" required /><small></small></label></div>
+        <label><span data-i18n="subjectLabel">Asunto</span><input name="subject" type="text" required /><small></small></label>
+        <label><span data-i18n="messageLabel">Mensaje</span><textarea name="message" rows="5" required></textarea><small></small></label>
+        <button class="button button--lime" type="submit"><span data-i18n="send">Enviar mensaje</span><b>↗</b></button>
+        <p class="form-hint" data-i18n="sendHint">Tu mensaje se enviará de forma segura mediante EmailJS.</p>
+        <p class="form-status" id="contact-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+  <footer><div class="footer__top"><a class="brand brand--footer" href="#inicio"><span>JR</span><i>.</i></a><p data-i18n="footerTagline">Diseñando y desarrollando productos digitales completos.</p></div><div class="footer__bottom"><p>Jorge Rocha <span>Fullstack Developer</span></p><div><a href="https://github.com/georgemibu" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/jorge-rocha-fullstack/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="mailto:georgemibu@gmail.com">Email ↗</a></div><p>© <span id="year"></span></p></div></footer>
+  <script>import '../scripts/site.js';</script>
+</BaseLayout>
